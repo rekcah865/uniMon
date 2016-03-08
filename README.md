@@ -20,3 +20,7 @@ $ cd grafana26 && mkdir lib ect log
 
 ```
 
+Reference
+
+[Oracle 11gR2 Database Client Installation Guide](https://docs.oracle.com/cd/E11882_01/install.112/e24322/toc.htm)
+
