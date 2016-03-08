@@ -9,16 +9,12 @@ RUN ln -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo ZONE="Asia/Shanghai" > /etc/sysconfig/clock
 
 ## Cron, Postfix, ksh
-RUN yum -y install vixie-cron mailx ksh postfix unzip
+RUN yum -y install vixie-cron mailx ksh postfix unzip 
 #sed -ri 's/^#mydomain = domain.tld/mydomain = xxx.com/g' /etc/postfix/main.cf
 
 ## Grafana 2.6
-RUN yum install -y initscripts fontconfig
-RUN export https_proxy=http://10.40.3.249:3128
-RUN curl https://grafanarel.s3.amazonaws.com/builds/grafana-2.6.0-1.x86_64.rpm -o grafana-2.6.0-1.x86_64.rpm
-RUN rpm -ivh grafana-2.6.0-1.x86_64.rpm
-RUN groupmod grafana && usermod -g grafana grafana
-RUN chown grafana:grafana /etc/grafana /var/log/grafana /var/lib/grafana
+ADD ./grafana.repo /etc/yum.repos.d/grafana.repo
+RUN yum -y install grafana
 VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 EXPOSE 3000
  
@@ -26,7 +22,7 @@ EXPOSE 3000
 ADD ./influxdb.repo /etc/yum.repos.d/influxdb.repo
 RUN yum install influxdb
 ADD ./influxdb.conf /etc/influxdb/influxdb.conf
-VOLUME ["/var/lib/influxdb/data","/var/lib/influxdb/wal"]
+VOLUME ["/var/lib/influxdb"]
 EXPOSE 8083 8086
 
 
@@ -44,7 +40,9 @@ RUN su - oracle -c "/u01/source/client/runInstaller -responseFile /tmp/11gr2_cli
 RUN /u01/app/oraInventory/orainstRoot.sh
 RUN /u01/app/oraInventory/orainstRoot.sh
 RUN rm -rf /tmp/Ora* /tmp/CVU*
-
-
+## Oracle client env
+RUN echo "export ORACLE_HOME=/u01/app/oracle/product/client" >> /etc/profile
+RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib" >> /etc/profile
+RUN echo "export PATH=$PATH:$ORACLE_HOME/bin" >> /etc/profile
 
 ENTRYPOINT ["/usr/bin/supervisord","-c","/etc/supervisor.conf"]

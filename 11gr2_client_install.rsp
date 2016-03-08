@@ -23,7 +23,7 @@ oracle.install.responseFileVersion=/oracle/install/rspfmt_clientinstall_response
 ORACLE_HOSTNAME=localhost
 #-------------------------------------------------------------------------------
 # Unix group to be set for the inventory directory.  
-UNIX_GROUP_NAME=dba
+UNIX_GROUP_NAME=oinstall
 #-------------------------------------------------------------------------------
 # Inventory location.
 INVENTORY_LOCATION=/u01/app/oraInventory
