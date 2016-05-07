@@ -3,6 +3,8 @@ Unify monitor job with docker container( Grafana, InfluxDB)
  
 ### 1 uniMon script
 
+* [ping_mon.sh](ping_mon.sh): Used to ping server monitor
+* [gps_mon.sh ](gps_mon.sh ): Used to GPS(GetPutservice) monitor through the manage port with telnet
  
 ### 2 uniMon in Docker
 
