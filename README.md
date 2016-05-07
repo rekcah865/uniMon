@@ -1,10 +1,10 @@
 # uniMon
 Unify monitor job with docker container( Grafana, InfluxDB)
  
-### uniMon script
+### 1 uniMon script
 
  
-### uniMon in Docker
+### 2 uniMon in Docker
 
 * Build image(CentOS6.7) which includes cron, oracle 11gR2 client, grafana v2.6, influxdb v0.10.2
 	- Download [Oracle 11gR2 client]()
@@ -98,7 +98,7 @@ $ curl -G '10.40.126.103:5003/query' --data-urlencode "q=show databases"
 [http://10.40.126.103:5001/](http://10.40.126.103:5001/)
 [http://10.40.126.103:5002](http://10.40.126.103:5002)
 
-### Monitor database design
+### 3 Monitor database design
 
 * Database, RPs and CQs
 
@@ -140,7 +140,7 @@ $ curl -G http://10.40.126.103:5003/query?db=unimon --data-urlencode "db=unimon"
 
 ### Reference
 
-[InfluxDB Installation](https://docs.influxdata.com/influxdb/v0.8/introduction/installation/)
-[Grafana RPM Installation](http://docs.grafana.org/installation/rpm)
-[Oracle 11gR2 Database Client Installation Guide](https://docs.oracle.com/cd/E11882_01/install.112/e24322/toc.htm)
+* [InfluxDB Installation](https://docs.influxdata.com/influxdb/v0.8/introduction/installation/)
+* [Grafana RPM Installation](http://docs.grafana.org/installation/rpm)
+* [Oracle 11gR2 Database Client Installation Guide](https://docs.oracle.com/cd/E11882_01/install.112/e24322/toc.htm)
 
