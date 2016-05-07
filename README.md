@@ -96,6 +96,7 @@ $ curl -G '10.40.126.103:5003/query' --data-urlencode "q=show databases"
 ```
 	   
 [http://10.40.126.103:5001/](http://10.40.126.103:5001/)
+
 [http://10.40.126.103:5002](http://10.40.126.103:5002)
 
 ### 3 Monitor database design
